@@ -1,4 +1,4 @@
-# Haraka-API
+# HarakaPay Payment Gateway System
 
 Haraka-API is a Node.js RESTful API built with Express and PostgreSQL for managing users and roles. It includes secure user registration with password hashing using bcrypt.
 
