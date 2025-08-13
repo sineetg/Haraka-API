@@ -87,9 +87,9 @@ The server will run on ```http://localhost:3000```.
 
 ### Register User
 
- **- POST** ```/register```
+**- POST** ```/register```
  
- **- Request Body** (JSON)**:**
+**- Request Body** (JSON)**:**
 
 ```json
 {
@@ -101,7 +101,7 @@ The server will run on ```http://localhost:3000```.
 }
 ```
 
- **- Response:**
+**- Response:**
 
 ```json
 {
@@ -118,15 +118,15 @@ The server will run on ```http://localhost:3000```.
 
 ### Get All Users
 
- **- GET** ```/users```
+**- GET** ```/users```
  
- **- Response:** Returns a list of all users in the database.
+**- Response:** Returns a list of all users in the database.
 
 ### Get All Roles
 
- **- GET** ```/roles```
+**- GET** ```/roles```
 
- **- Response:** Returns a list of all roles in the database.
+**- Response:** Returns a list of all roles in the database.
 
 ## Example Requests
 
