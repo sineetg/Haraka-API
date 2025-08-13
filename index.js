@@ -45,6 +45,68 @@ app.post('/register', async (req, res) => {
 });
 
 
+
+// LOGIN: email OR phone_number + password
+app.post('/login', async (req, res) => {
+  try {
+    const { email, phone_number, password } = req.body;
+
+    // basic validation
+    if ((!email && !phone_number) || !password) {
+      return res.status(400).json({ message: 'email or phone_number AND password are required' });
+    }
+
+    // figure out which identifier to use
+    const identifierField = email ? 'email' : 'phone_number';
+    const identifierValue = email || phone_number;
+
+    // fetch the user (include password hash for comparison)
+    const { rows } = await pool.query(
+      `SELECT user_id, user_name, email, phone_number, password, role_id
+       FROM user_tb
+       WHERE ${identifierField} = $1
+       LIMIT 1`,
+      [identifierValue]
+    );
+
+    // if no user -> generic message (don’t leak which part failed)
+    if (rows.length === 0) {
+      return res.status(401).json({ message: 'invalid credentials' });
+    }
+
+    const user = rows[0];
+
+    // compare password with stored hash
+    const ok = await bcrypt.compare(password, user.password);
+    if (!ok) {
+      return res.status(401).json({ message: 'invalid credentials' });
+    }
+
+    // success — never send the password back
+    const { password: _omit, ...safeUser } = user;
+    return res.status(200).json({ message: 'login successful', user: safeUser });
+
+  } catch (err) {
+    console.error('LOGIN ERROR:', err);
+    return res.status(500).json({ message: 'server error' });
+  }
+});
+
+
+
+// Get all users
+app.get('/users', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM user_tb');
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+
 // Starting the server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
