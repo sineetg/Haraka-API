@@ -86,8 +86,10 @@ The server will run on ```http://localhost:3000```.
 ## API Endpoints
 
 ### Register User
+
  **- POST** ```/register```
- **- Request Body (JSON):**
+ 
+ **- Request Body** (JSON)**:**
 
 ```
 {
@@ -115,15 +117,19 @@ The server will run on ```http://localhost:3000```.
 ```
 
 ### Get All Users
+
  **- GET** ```/users```
+ 
  **- Response:** Returns a list of all users in the database.
 
 ### Get All Roles
+
  **- GET** ```/roles```
 
  **- Response:** Returns a list of all roles in the database.
 
 ### Example Requests
+
 You can use Postman, curl, or any HTTP client to test the API endpoints.
 
 ## License
