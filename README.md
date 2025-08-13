@@ -87,11 +87,11 @@ The server will run on ```http://localhost:3000```.
 
 ### Register User
 
- **- POST** ```/register```
+ **POST** ```/register```
  
- **- Request Body** (JSON)**:**
+ **Request Body** (JSON)**:**
 
-```
+```json
 {
   "user_name": "John Doe",
   "email": "john@example.com",
@@ -101,9 +101,9 @@ The server will run on ```http://localhost:3000```.
 }
 ```
 
- **- Response:**
+ **Response:**
 
-```
+```json
 {
   "message": "User registered successfully",
   "user": {
@@ -118,9 +118,9 @@ The server will run on ```http://localhost:3000```.
 
 ### Get All Users
 
- **- GET** ```/users```
+ **GET** ```/users```
  
- **- Response:** Returns a list of all users in the database.
+ **Response:** Returns a list of all users in the database.
 
 ### Get All Roles
 
@@ -128,7 +128,7 @@ The server will run on ```http://localhost:3000```.
 
  **- Response:** Returns a list of all roles in the database.
 
-### Example Requests
+## Example Requests
 
 You can use Postman, curl, or any HTTP client to test the API endpoints.
 
