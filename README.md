@@ -43,30 +43,6 @@ cd Haraka-API
 npm install
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Database Setup
 
 1. Create a PostgreSQL database:
@@ -90,7 +66,7 @@ CREATE TABLE user_tb (
     user_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     phone_number VARCHAR(15) UNIQUE NOT NULL,
-    password TEXT NOT NULL,
+    password VARCHAR(255) NOT NULL,
     role_id INT REFERENCES role(role_id)
 );
 ```
@@ -109,9 +85,9 @@ The server will run on ```http://localhost:3000```.
 
 ## API Endpoints
 
-- Register User
-- POST ```/register```
-- Request Body (JSON):
+### Register User
+ **- POST** ```/register```
+ **- Request Body (JSON):**
 
 ```
 {
@@ -123,7 +99,7 @@ The server will run on ```http://localhost:3000```.
 }
 ```
 
-- Response:
+ **- Response:**
 
 ```
 {
@@ -138,22 +114,18 @@ The server will run on ```http://localhost:3000```.
 }
 ```
 
-Get All Users
-GET /users
+### Get All Users
+ **- GET** ```/users```
+ **- Response:** Returns a list of all users in the database.
 
-Response: Returns a list of all users in the database.
+### Get All Roles
+ **- GET** ```/roles```
 
-Get All Roles
-GET /roles
+ **- Response:** Returns a list of all roles in the database.
 
-Response: Returns a list of all roles in the database.
-
-Example Requests
+### Example Requests
 You can use Postman, curl, or any HTTP client to test the API endpoints.
 
-License
-This project is licensed under the MIT License.
+## License
 
-pgsql
-Copy
-Edit
+This project is licensed under the MIT License.
