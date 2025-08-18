@@ -126,7 +126,6 @@ The server will run on ```http://localhost:3000```.
 
 **- GET** ```/roles```
 
-**- Response:** Returns a list of all roles in the database.
 
 ## Example Requests
 
